@@ -112,6 +112,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
+            {/* Home Link */}
             <a
               href="#home"
               className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium relative group"
@@ -172,6 +173,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
               </div>
             </div>
 
+            {/* Remaining Nav Items */}
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -216,40 +218,6 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
                 {item.label}
               </a>
             ))}
-            
-            {/* Mobile Services Section */}
-            <div className="border-t border-stone-200/50 pt-3">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-slate-700 font-medium">Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
-              </div>
-              <button
-                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-                className="w-full text-left text-slate-700 hover:text-slate-900 transition-colors duration-200 font-medium py-2"
-              >
-                All Services
-              </button>
-              
-              {/* Mobile Services Dropdown */}
-              <div className={`overflow-hidden transition-all duration-300 ${
-                isServicesDropdownOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-              }`}>
-                <div className="space-y-2 mt-2 pl-4">
-                  {services.map((service, index) => (
-                    <button
-                      key={service.name}
-                      onClick={scrollToServices}
-                      className="block w-full text-left p-2 rounded-lg hover:bg-slate-50 transition-colors duration-200"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <div className="font-medium text-slate-800 text-sm">{service.name}</div>
-                      <div className="text-xs text-slate-600">{service.description}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
             <button
               onClick={() => {
                 onBookingClick();
