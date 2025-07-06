@@ -111,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ onBookingClick }) => {
               onClick={scrollToServices}
               className="bg-white/50 backdrop-blur-sm border border-stone-200 hover:border-stone-300 text-slate-800 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:bg-white/80 flex items-center justify-center group"
             >
-              View Our Work
+              View Our Services
               <ChevronDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform duration-300" />
             </button>
           </div>
