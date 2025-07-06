@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <a href="#home" className="flex items-center space-x-2 group cursor-pointer">
             <div className="relative">
               <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-slate-800 to-stone-700 rounded-lg flex items-center justify-center shadow-lg">
                 <Slash className="w-4 h-4 md:w-6 md:h-6 text-white" />
@@ -108,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
             <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-800 to-stone-600 bg-clip-text text-transparent">
               SLASHNEST
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
