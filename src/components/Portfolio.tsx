@@ -102,34 +102,34 @@ const Portfolio = () => {
   }, [filteredProjects]);
 
   return (
-    <section id="portfolio" className="py-20 bg-gradient-to-br from-blue-200 via-blue-400 to-indigo-200 relative overflow-hidden">
+    <section id="portfolio" className="py-12 md:py-20 bg-gradient-to-br from-blue-200 via-blue-400 to-indigo-200 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 border border-slate-800/50 mb-6 hover:scale-105 transition-transform duration-300">
-            <Filter className="w-4 h-4 text-yellow-400 mr-2" />
-            <span className="text-sm font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 bg-clip-text text-transparent">Our Work</span>
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 border border-slate-800/50 mb-4 md:mb-6 hover:scale-105 transition-transform duration-300">
+            <Filter className="w-3 md:w-4 h-3 md:h-4 text-yellow-400 mr-1.5 md:mr-2" />
+            <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 bg-clip-text text-transparent">Our Work</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-stone-700 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-900 to-stone-700 bg-clip-text text-transparent">
             Portfolio Showcase
           </h2>
-          <p className="text-xl text-slate-900 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-slate-900 max-w-3xl mx-auto leading-relaxed">
             Explore our latest projects and see how we've helped businesses transform their digital presence
           </p>
         </div>
 
         {/* Filter Buttons with Animation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12">
           {filters.map((filter, index) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
+              className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 text-sm md:text-base ${
                 activeFilter === filter
                   ? 'bg-gradient-to-r from-slate-800 to-stone-700 text-white shadow-lg scale-105'
                   : 'bg-white/60 backdrop-blur-sm border border-slate-200/50 text-slate-700 hover:border-slate-300/50 hover:bg-white/80'
@@ -142,12 +142,12 @@ const Portfolio = () => {
         </div>
 
         {/* Projects Grid with Stagger Animation */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
               ref={el => projectRefs.current[index] = el}
-              className={`group bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-200/50 hover:-translate-y-2 cursor-pointer transform ${
+              className={`group bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-200/50 hover:-translate-y-2 cursor-pointer transform ${
                 visibleProjects[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -156,48 +156,48 @@ const Portfolio = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 
                 {/* Overlay with Results */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                  <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4">
+                    <div className="flex items-center justify-between mb-2 md:mb-3">
+                      <span className="px-2 md:px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
                         {project.results}
                       </span>
                       <div className="flex items-center">
                         {[...Array(project.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                          <Star key={i} className="w-3 md:w-4 h-3 md:h-4 text-yellow-400 fill-current" />
                         ))}
                       </div>
                     </div>
-                    <button className="w-full bg-white/90 backdrop-blur-sm text-slate-800 py-2 px-4 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-white transition-colors duration-200 group/btn">
-                      <ExternalLink className="w-4 h-4" />
+                    <button className="w-full bg-white/90 backdrop-blur-sm text-slate-800 py-1.5 md:py-2 px-3 md:px-4 rounded-lg md:rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-white transition-colors duration-200 group/btn text-sm md:text-base">
+                      <ExternalLink className="w-3 md:w-4 h-3 md:h-4" />
                       View Project
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="w-3 md:w-4 h-3 md:h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-medium rounded-full">
+              <div className="p-4 md:p-6">
+                <div className="flex items-center justify-between mb-2 md:mb-3">
+                  <span className="px-2 md:px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-medium rounded-full">
                     {project.category}
                   </span>
                   <div className="flex items-center">
                     {[...Array(project.rating)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-2.5 md:w-3 h-2.5 md:h-3 text-yellow-400 fill-current" />
                     ))}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-slate-900 transition-colors duration-300">
+                <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-1.5 md:mb-2 group-hover:text-slate-900 transition-colors duration-300">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-600 mb-4 leading-relaxed">
+                <p className="text-sm md:text-base text-slate-600 mb-3 md:mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -205,7 +205,7 @@ const Portfolio = () => {
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="text-xs px-2 py-1 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors duration-200"
+                      className="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-full"
                     >
                       {tag}
                     </span>

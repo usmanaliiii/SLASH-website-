@@ -471,31 +471,31 @@ const Services: React.FC<ServicesProps> = ({ onBookingClick }) => {
 
   return (
     <>
-      <section id="services" className="py-20 bg-gradient-to-br from-blue-200 via-blue-400 to-indigo-200 relative overflow-hidden">
+      <section id="services" className="py-12 md:py-20 bg-gradient-to-br from-blue-200 via-blue-400 to-indigo-200 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-100 to-transparent"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 border border-slate-800/50 mb-6 hover:scale-105 transition-transform duration-300">
-              <span className="text-sm font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 bg-clip-text text-transparent">Premium Digital Services</span>
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 border border-slate-800/50 mb-4 md:mb-6 hover:scale-105 transition-transform duration-300">
+              <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 bg-clip-text text-transparent">Premium Digital Services</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-relaxed overflow-visible text-slate-900">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-relaxed overflow-visible text-slate-900">
               Premium Digital Services
             </h2>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
               We offer comprehensive digital solutions designed to elevate your brand and drive meaningful results
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
                 ref={el => serviceRefs.current[index] = el}
-                className={`group bg-gradient-to-br from-white to-slate-50/50 rounded-3xl p-8 border border-slate-200/50 hover:border-slate-300/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer transform ${
+                className={`group bg-gradient-to-br from-white to-slate-50/50 rounded-2xl md:rounded-3xl p-6 md:p-8 border border-slate-200/50 hover:border-slate-300/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer transform ${
                   visibleServices[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -503,62 +503,62 @@ const Services: React.FC<ServicesProps> = ({ onBookingClick }) => {
                 onMouseLeave={() => setHoveredService(null)}
                 onClick={() => openServiceModal(index)}
               >
-                <div className={`w-16 h-16 ${index === 0 ? 'bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600' : `bg-gradient-to-r ${hoveredService === index ? service.hoverColor : service.color}`} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:rotate-6`}>
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className={`w-12 md:w-16 h-12 md:h-16 ${index === 0 ? 'bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600' : `bg-gradient-to-r ${hoveredService === index ? service.hoverColor : service.color}`} rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:rotate-6`}>
+                  <service.icon className="w-6 md:w-8 h-6 md:h-8 text-white" />
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-800 mb-4 group-hover:text-slate-900 transition-colors duration-300">
+                <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-3 md:mb-4 group-hover:text-slate-900 transition-colors duration-300">
                   {service.title}
                 </h3>
 
-                <p className="text-slate-900 mb-6 leading-relaxed">
+                <p className="text-sm md:text-base text-slate-900 mb-4 md:mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Stats Badge */}
-                <div className="mb-6">
-                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-medium rounded-full">
+                <div className="mb-4 md:mb-6">
+                  <span className="inline-block px-2 md:px-3 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-medium rounded-full">
                     {service.stats}
                   </span>
                 </div>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-slate-900">
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                    <li key={featureIndex} className="flex items-center text-xs md:text-sm text-slate-900">
+                      <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-500 mr-2 md:mr-3 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <div className="pt-6 border-t border-slate-200/50">
+                <div className="pt-4 md:pt-6 border-t border-slate-200/50">
                   <button className="flex items-center text-slate-700 font-medium hover:text-slate-900 transition-colors duration-300 group/btn">
                     Learn More
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="w-3 md:w-4 h-3 md:h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
 
                 {/* Hover Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl pointer-events-none`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl md:rounded-3xl pointer-events-none`}></div>
               </div>
             ))}
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16">
-            <div className="bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-slate-200/50">
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">
+          <div className="text-center mt-12 md:mt-16">
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 border border-slate-200/50">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4">
                 Ready to Transform Your Business?
               </h3>
-              <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
+              <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6 max-w-2xl mx-auto">
                 Let's discuss how our services can help you achieve your digital goals and drive growth.
               </p>
               <button 
                 onClick={onBookingClick}
-                className="bg-gradient-to-r from-slate-800 to-stone-700 hover:from-slate-900 hover:to-stone-800 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
+                className="bg-gradient-to-r from-slate-800 to-stone-700 hover:from-slate-900 hover:to-stone-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
               >
                 Get Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-4 md:w-5 h-4 md:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
           </div>
