@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
   ];
 
   const navItems = [
-    { href: '#home', label: 'Home' },
+    // { href: '#home', label: 'Home' }, // Removed to prevent duplicate Home links
     { href: '#portfolio', label: 'Portfolio' },
     { href: '#blog', label: 'Blog' },
     { href: '#testimonials', label: 'Testimonials' },
