@@ -120,59 +120,14 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
-            
-            {/* Services Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsServicesDropdownOpen(true)}
-              onMouseLeave={() => setIsServicesDropdownOpen(false)}
+            {/* Services Link (no dropdown) */}
+            <a
+              href="#services"
+              className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium relative group"
             >
-              <button className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium flex items-center gap-1">
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              
-              {/* Dropdown Menu */}
-              <div className={`absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-stone-200/50 transition-all duration-300 transform origin-top ${
-                isServicesDropdownOpen 
-                  ? 'opacity-100 scale-100 translate-y-0' 
-                  : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
-              }`}>
-                <div className="p-4">
-                  <div className="grid grid-cols-1 gap-2">
-                    {services.map((service, index) => (
-                      <button
-                        key={service.name}
-                        onClick={scrollToServices}
-                        className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50/80 transition-all duration-200 group/item"
-                        style={{ animationDelay: `${index * 50}ms` }}
-                      >
-                        <div className="text-left">
-                          <h4 className="font-medium text-slate-800 group-hover/item:text-slate-900 transition-colors duration-200">
-                            {service.name}
-                          </h4>
-                          <p className="text-sm text-slate-600 group-hover/item:text-slate-700 transition-colors duration-200">
-                            {service.description}
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-slate-400 group-hover/item:text-slate-600 group-hover/item:translate-x-1 transition-all duration-200" />
-                      </button>
-                    ))}
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-stone-200/50">
-                    <button
-                      onClick={scrollToServices}
-                      className="w-full bg-gradient-to-r from-slate-800 to-stone-700 hover:from-slate-900 hover:to-stone-800 text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                    >
-                      View All Services
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+              Services
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
             {/* Remaining Nav Items */}
             {navItems.map((item) => (
               <a
