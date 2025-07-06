@@ -7,16 +7,29 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollPosition = window.scrollY;
+      setScrollY(scrollPosition);
+      setIsScrolled(scrollPosition > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Calculate transparency based on scroll position for mobile
+  const getMobileTransparency = () => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      const maxScroll = 200; // Max scroll distance for full transparency
+      const transparency = Math.min(scrollY / maxScroll, 1);
+      return Math.max(0.1, transparency); // Minimum 10% opacity
+    }
+    return 0.9; // Default for desktop
+  };
 
   const navItems = [
     { href: '#home', label: 'Home' },
@@ -30,20 +43,20 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-stone-200/50' 
+        ? `bg-white/${Math.round(getMobileTransparency() * 100)} backdrop-blur-md shadow-lg border-b border-stone-200/50` 
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-r from-slate-800 to-stone-700 rounded-lg flex items-center justify-center shadow-lg">
-                <Slash className="w-6 h-6 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-slate-800 to-stone-700 rounded-lg flex items-center justify-center shadow-lg">
+                <Slash className="w-4 h-4 md:w-6 md:h-6 text-white" />
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-md"></div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-md"></div>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-stone-600 bg-clip-text text-transparent">
+            <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-slate-800 to-stone-600 bg-clip-text text-transparent">
               SLASHNEST
             </span>
           </div>
@@ -73,9 +86,9 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-stone-100 transition-colors duration-200"
+            className="md:hidden p-1.5 rounded-lg hover:bg-stone-100 transition-colors duration-200"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -83,12 +96,12 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200/50">
-          <div className="px-4 py-6 space-y-4">
+          <div className="px-4 py-4 space-y-3">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block text-slate-700 hover:text-slate-900 transition-colors duration-200 font-medium"
+                className="block text-slate-700 hover:text-slate-900 transition-colors duration-200 font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
