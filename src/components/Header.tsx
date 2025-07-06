@@ -112,16 +112,13 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+            <a
+              href="#home"
+              className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium relative group"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
             
             {/* Services Dropdown */}
             <div 
@@ -136,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
               </button>
               
               {/* Dropdown Menu */}
-              <div className={`absolute top-full left-0 mt-2 w-80 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-stone-200/50 transition-all duration-300 transform origin-top ${
+              <div className={`absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-stone-200/50 transition-all duration-300 transform origin-top ${
                 isServicesDropdownOpen 
                   ? 'opacity-100 scale-100 translate-y-0' 
                   : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
@@ -174,6 +171,17 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
                 </div>
               </div>
             </div>
+
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
           </nav>
 
           {/* Book Appointment Button */}
