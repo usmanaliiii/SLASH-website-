@@ -208,6 +208,20 @@ const Header: React.FC<HeaderProps> = ({ onBookingClick }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200/50">
           <div className="px-4 py-4 space-y-3">
+            <a
+              href="#home"
+              className="block text-slate-700 hover:text-slate-900 transition-colors duration-200 font-medium py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </a>
+            <a
+              href="#services"
+              className="block text-slate-700 hover:text-slate-900 transition-colors duration-200 font-medium py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Services
+            </a>
             {navItems.map((item) => (
               <a
                 key={item.href}
